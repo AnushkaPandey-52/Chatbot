@@ -1,0 +1,436 @@
+{
+  "document_info": {
+    "title": "Handbook Module 7: NLP",
+    "disclaimer": "The content is curated from online/offline resources and used for educational purpose only",
+    "type": "Educational Handbook",
+    "subject": "Natural Language Processing"
+  },
+  "course_objectives": [
+    "To understand fundamental concepts of Natural Language Processing (NLP) and text classification",
+    "To preprocess textual data using tokenization, stopword removal, stemming/lemmatization, and normalization techniques",
+    "Convert text to numerical features using methods like Bag-of-Words, TF-IDF, and n-grams with Scikit-learn",
+    "To build and evaluate classification models (e.g., Naive Bayes, Logistic Regression, SVM) for NLP tasks",
+    "Apply model evaluation metrics such as accuracy, precision, recall, F1-score, and confusion matrix",
+    "Construct modular NLP pipelines using Scikit-learn's Pipeline functionality",
+    "Interpret model predictions to gain insight into classifier behavior and feature importance",
+    "Apply learned skills to real-world datasets such as spam detection, sentiment analysis, or news categorization"
+  ],
+  "chapters": {
+    "chapter_1": {
+      "title": "Introduction to NLP & AI/ML Algorithms",
+      "learning_outcomes": [
+        "Understand the role of NLP in Artificial Intelligence and how Machine Learning algorithms are used to process human language",
+        "Explore the basic steps in NLP processing such as tokenization, stemming, lemmatization, and stop-word removal to clean and prepare text data",
+        "Identify and analyze sentiments in textual data and extract key entities like names, locations, and dates using entity recognition techniques",
+        "Learn how to classify text into categories using NLP techniques and build models for applications like spam detection",
+        "Apply supervised and unsupervised learning methods to various NLP tasks such as sentiment analysis and text classification"
+      ],
+      "sections": {
+        "1.1": {
+          "title": "What is NLP?",
+          "definition": "Natural Language Processing (NLP) is the discipline of creating machines that can handle human language or human-like data, in the form it is written, spoken, and structured",
+          "subfields": {
+            "natural_language_understanding": "NLU involves semantic analysis or the identification of the intended sense of text",
+            "natural_language_generation": "NLG involves text generation by machine"
+          },
+          "importance": "NLP is a part of daily life and increasingly so as language technology is being used in various fields such as retailing (for example, customer service chatbots) and medicine (interpreting or summarizing electronic health records)",
+          "how_nlp_works": {
+            "data_preprocessing": {
+              "description": "We must ready the text before any model can learn from language",
+              "steps": [
+                "Stemming and Lemmatization: These processes bring words back to their base or root form",
+                "Sentence Segmentation: Splits long text into separate sentences",
+                "Stop Word Removal: The words 'the,' 'is,' 'a,' and 'and' are frequent but contribute little meaning",
+                "Tokenization: This splits the text into words or parts of words (called tokens)"
+              ]
+            },
+            "feature_extraction": {
+              "description": "After the text is cleaned, we must convert it into numbers so that the model can read it",
+              "techniques": {
+                "bag_of_words": "Counts the frequency of each word in a document",
+                "tf_idf": "Measures how significant a word is in a document relative to all documents",
+                "word_embeddings": "Convert words into vectors (collections of numbers) depending on their significance and context"
+              }
+            },
+            "modeling": {
+              "classic_models": ["Logistic Regression", "Naive Bayes", "Decision Trees", "Gradient Boosted Trees"],
+              "advanced_models": ["Neural Networks", "Hidden Markov Models (HMM)"],
+              "language_models": "Language models make predictions about what follows in a sentence"
+            }
+          }
+        },
+        "1.2": {
+          "title": "Real-world applications",
+          "applications": {
+            "virtual_assistants_chatbots": "NLP-based assistants such as Siri, Alexa, and Google Assistant assist users in carrying out routine tasks through voice commands",
+            "language_translation": "NLP drives real-time language translation applications such as Google Translate",
+            "speech_recognition": "NLP is a critical component in transforming spoken words into text using speech recognition",
+            "sentiment_analysis": "Businesses apply sentiment analysis to automatically evaluate customer feedback",
+            "healthcare_analytics": "NLP is revolutionizing healthcare by allowing systems to analyze and process unstructured medical text",
+            "content_recommendations": "NLP is at the core of recommendation engines for platforms like YouTube, Netflix",
+            "legal_automation": "In the banking and legal industries, NLP helps to automatically scan and summarize long documents"
+          }
+        },
+        "2.3": {
+          "title": "Challenges of Natural Language Processing (NLP)",
+          "challenges": [
+            "Complexity and Diversity of Human Languages",
+            "Lack of High-Quality and Representative Training Data",
+            "Extensive Development Time and Resource Requirements",
+            "Ambiguity in Phrasing and Context Understanding",
+            "Handling Misspellings and Grammatical Errors",
+            "Biases in NLP Algorithms",
+            "Words with Multiple Meanings (Polysemy)",
+            "Addressing Multilingualism",
+            "Reducing Uncertainty and Minimizing False Positives",
+            "Enabling Seamless and Context-Aware Continuous Conversations"
+          ],
+          "solutions": {
+            "improving_data_quality": ["Data Augmentation", "Data Synthesis", "Crowdsourcing"],
+            "resolving_ambiguity": ["Including contextual embeddings", "Employing semantic analysis methods", "Training models on large, varied datasets"],
+            "handling_oov_words": ["Tokenization", "Character-Level Modeling", "Vocabulary Expansion"],
+            "handling_data_shortage": ["Transfer Learning", "Pre-Training"]
+          }
+        },
+        "2.4": {
+          "title": "AI/ML Algorithms for NLP",
+          "supervised_vs_unsupervised": {
+            "supervised_learning": "The model is trained on labeled datasets. Every input, like a sentence or document, is associated with an output label",
+            "unsupervised_learning": "Involves data that is not explicitly labeled. The goal is to discover underlying structures or patterns in the data"
+          },
+          "ml_algorithms": {
+            "naive_bayes": "Makes the assumption that features (such as words) are conditionally independent with respect to the class label",
+            "svm": "Support Vector Machines provide a stronger, more versatile option, especially for complex decision boundary tasks",
+            "deep_learning": {
+              "rnn": "Recurrent Neural Networks are capable of processing sequential data",
+              "lstm_gru": "More complex architectures to maintain information over longer sequences",
+              "cnn": "Convolutional Neural Networks have become successful in text classification tasks",
+              "transformers": "Models such as BERT and GPT adopt attention to build relations among every word"
+            }
+          },
+          "word_embeddings": "Rather than having words represented as sparse, vectorless one-hot representations, embeddings embed words in high-dimensional, continuous vector spaces",
+          "transfer_learning": "Rather than training models from scratch for each new task, transfer learning takes advantage of models pre-trained on large datasets"
+        },
+        "2.5": {
+          "title": "NLTK (Natural Language Toolkit)",
+          "definition": "NLTK is a premier open-source Python library exclusively built for NLP applications",
+          "significance": "It serves as an educational bridge and prototyping tool for NLP engineers",
+          "history": "The history of NLTK started early in the 2000s at the University of Pennsylvania with Steven Bird and Edward Loper",
+          "installation": {
+            "pip_install": "pip install nltk",
+            "download_data": "import nltk; nltk.download()"
+          }
+        },
+        "2.7": {
+          "title": "Understanding the NLP Datasets",
+          "importance": "NLP models are no better than the data they are trained on",
+          "key_datasets": {
+            "imdb_reviews": {
+              "description": "Collection of 50,000 movie reviews, evenly divided between positive and negative sentiments",
+              "use_case": "Sentiment analysis and binary text classification"
+            },
+            "conll_2003": {
+              "description": "Benchmarking dataset for Named Entity Recognition models",
+              "entities": ["person names", "locations", "organizations", "miscellaneous entities"]
+            },
+            "wikipedia_corpus": {
+              "description": "Large, high-quality, multilingual corpus for unsupervised learning and pretraining",
+              "applications": ["Question answering systems", "Chatbots", "Text summarization engines", "Semantic search tools"]
+            }
+          }
+        }
+      }
+    },
+    "chapter_2": {
+      "title": "Basics of NLP Processing",
+      "learning_outcomes": [
+        "To understand how to load and handle text data from various sources for NLP processing",
+        "To learn techniques for cleaning and normalizing text to prepare it for analysis",
+        "To apply tokenization methods for breaking down text into meaningful units",
+        "To implement stemming techniques for reducing words to their base forms",
+        "To perform part-of-speech tagging to identify grammatical roles of words in text",
+        "To identify named entities and apply chunking to extract meaningful text phrases"
+      ],
+      "sections": {
+        "2.1": {
+          "title": "Basic NLP Requests & Text Content Processing",
+          "nlp_requests": {
+            "definition": "An NLP request is just a task or command that involves human language",
+            "basic_requests": {
+              "text_classification": "Categorizing text into pre-defined groups",
+              "sentiment_analysis": "Identifying the emotional tone of a text",
+              "named_entity_recognition": "Extracting specific entities from text, such as names of individuals, locations, dates, and organizations",
+              "language_detection": "Identifying what language a provided text is written in",
+              "text_summarization": "Producing a short summary from a long document or article",
+              "translation": "The process of translating written language from one to another",
+              "keyword_extraction": "Identifying key words or phrases from a text that reflect its main subjects"
+            }
+          },
+          "text_processing": {
+            "definition": "Before a machine can understand or generate language, it has to process the text in a structured way",
+            "steps": [
+              "Text Cleaning (Preprocessing)",
+              "Tokenization",
+              "Lemmatization and Stemming",
+              "Normalization",
+              "Part of Speech (POS) Tagging",
+              "Named Entity Recognition (NER)",
+              "Dependency Parsing",
+              "Vectorization (Text to Numbers)"
+            ]
+          },
+          "preprocessing_steps": {
+            "loading_text_data": "Before we can process or analyze any text, we must first load the data into our program",
+            "text_cleaning": {
+              "common_steps": [
+                "Convert all text to lowercase",
+                "Remove punctuation",
+                "Remove extra spaces or line breaks",
+                "Remove numeric digits or special characters",
+                "Remove stopwords"
+              ]
+            },
+            "tokenization_stemming": {
+              "tokenization": "The process of splitting text into units called tokens",
+              "stemming": "A process of reducing a word to its root or base form"
+            }
+          }
+        },
+        "2.2": {
+          "title": "Syntactic Analysis & Chunking",
+          "syntactic_analysis": {
+            "definition": "The process of analyzing the structure of a sentence according to its grammar",
+            "importance": "Realizing the word structure of a sentence facilitates improved language comprehension and processing"
+          },
+          "chunking": {
+            "definition": "Splitting a sentence into meaningful parts, known as chunks",
+            "techniques": ["Rule-Based Chunking", "Statistical Chunking"]
+          },
+          "pos_tagging": {
+            "definition": "The process of identifying the part of speech of each word in a sentence",
+            "common_tags": {
+              "NN": "Nouns - Person, place, or thing",
+              "VB": "Verbs - Action or state",
+              "JJ": "Adjectives - Describes a noun",
+              "RB": "Adverbs - Describes a verb, adjective, or another adverb",
+              "IN": "Prepositions - Shows the relationship between a noun and another word"
+            }
+          },
+          "named_entity_recognition": {
+            "definition": "The process of identifying specific entities in a sentence that refer to real-world objects",
+            "entity_types": ["Persons", "Locations", "Organizations", "Dates/Times"]
+          }
+        }
+      }
+    },
+    "chapter_3": {
+      "title": "Sentiment & Entity Analysis",
+      "learning_outcomes": [
+        "Understand and differentiate between sentiment analysis and named entity recognition (NER) in the context of NLP",
+        "Perform sentiment classification on text data to detect positive, negative, or neutral opinions using both rule-based and machine learning approaches",
+        "Extract and categorize named entities (e.g., people, organizations, locations) from unstructured text using NLP libraries like spaCy or NLTK"
+      ],
+      "sections": {
+        "introduction": {
+          "overview": "Sentiment and Entity Analysis are key techniques in natural language processing",
+          "importance": [
+            "Decision Making: Helps companies and governments make informed choices",
+            "Automation: Saves time by automatically summarizing opinions",
+            "Personalization: Enables businesses to tailor products and services",
+            "Crisis Management: Quickly detects negative sentiment"
+          ],
+          "applications": [
+            "Social Media Monitoring",
+            "Customer Support",
+            "Market Research",
+            "Healthcare",
+            "Finance",
+            "Legal and Compliance"
+          ]
+        },
+        "sentiment_analysis_theory": {
+          "definition": "A type of natural language processing (NLP) that identifies and extracts opinions or emotions from text",
+          "use_cases": [
+            "Social Media Monitoring",
+            "Customer Feedback Analysis",
+            "Market Research",
+            "Brand Reputation Management",
+            "Product Development",
+            "Financial Markets"
+          ],
+          "types": {
+            "lexicon_based": {
+              "description": "Relies on a predefined list of words where each word is associated with a sentiment score",
+              "how_it_works": "Uses a predefined dictionary (lexicon) where words are tagged with sentiment scores"
+            },
+            "machine_learning_based": {
+              "description": "Computers learn from data how to recognize emotional tone in text",
+              "workflow": [
+                "Data Collection",
+                "Data Preprocessing",
+                "Feature Extraction",
+                "Model Training",
+                "Model Evaluation"
+              ]
+            },
+            "hybrid_approach": {
+              "description": "Combines both lexicon-based and machine learning techniques",
+              "benefits": "Gets the best of both worlds: precision of ML models and domain knowledge of lexicons"
+            }
+          },
+          "sentiment_scores": {
+            "definition": "Numerical values that represent the emotional tone or opinion expressed in text",
+            "scale_types": {
+              "binary": "Positive (1) / Negative (0)",
+              "ternary": "Positive (1), Neutral (0), Negative (-1)",
+              "continuous": "-1.0 to +1.0",
+              "multiclass": "Very Negative, Negative, Neutral, Positive, Very Positive"
+            }
+          }
+        },
+        "entity_analysis": {
+          "definition": "Named Entity Recognition (NER) automatically identifies and classifies named entities in text",
+          "entity_types": {
+            "PERSON": "Names of individuals",
+            "ORG": "Organizations and institutions",
+            "GPE": "Countries, states, or cities",
+            "EVENT": "Named events",
+            "DATE": "Calendar dates",
+            "PRODUCT": "Brands or items",
+            "MONEY": "Currency references",
+            "TIME": "Time-related references",
+            "LAW": "Legal terms and acts",
+            "LANGUAGE": "Spoken/written languages",
+            "RELIGION": "Religions or religious entities"
+          },
+          "use_cases": [
+            "Information Extraction",
+            "Search and Recommendation Systems",
+            "Knowledge Graph Creation",
+            "Question Answering Systems",
+            "Content Tagging & Categorization"
+          ],
+          "workflow": [
+            "Input text",
+            "Tokenization",
+            "Part-of-Speech (POS) Tagging",
+            "Feature Extraction",
+            "Named Entity Recognition Model",
+            "Sequence Labeling",
+            "Contextual Understanding",
+            "Post-processing",
+            "Output"
+          ]
+        }
+      }
+    },
+    "chapter_4": {
+      "title": "Text Classification & Spam Detection",
+      "learning_outcomes": [
+        "Explain the principles of text classification and its common applications, with a focus on spam detection",
+        "Preprocess and vectorize text data using techniques like tokenization, stopword removal, and TF-IDF transformation",
+        "Train and evaluate classification models (e.g., Naive Bayes, Logistic Regression) to distinguish between spam and non-spam messages",
+        "Measure model performance using metrics such as accuracy, precision, recall, and F1-score, and interpret confusion matrices",
+        "Build an end-to-end spam detection pipeline using Scikit-learn, from raw text input to prediction output"
+      ],
+      "sections": {
+        "introduction": {
+          "definition": "Text Classification is a fundamental task in Natural Language Processing (NLP) that involves categorizing text into predefined labels or classes",
+          "process": [
+            "Input raw text",
+            "Preprocess text (tokenization, stopword removal, stemming)",
+            "Extract features (BoW, TF-IDF, word embeddings)",
+            "Train machine learning models",
+            "Predict class of new text"
+          ]
+        },
+        "types_of_classification": {
+          "binary_classification": {
+            "definition": "Categorize text into one of two possible classes",
+            "example": "Classifying emails as Spam or Not Spam"
+          },
+          "multi_class_classification": {
+            "definition": "Categorizing text into one of several mutually exclusive classes",
+            "example": "Classifying news articles into Politics, Sports, Technology, and Health"
+          },
+          "multi_label_classification": {
+            "definition": "A text can belong to multiple categories simultaneously",
+            "example": "Article discussing both Technology and Environment"
+          },
+          "hierarchical_classification": {
+            "definition": "Involves a hierarchy of categories with broader categories and specific subcategories",
+            "example": "Customer Service > Delivery Issues"
+          }
+        },
+        "topic_modeling": {
+          "definition": "An unsupervised machine learning technique to automatically identify hidden themes or topics in a collection of texts",
+          "how_it_works": [
+            "Feed large set of unstructured text documents",
+            "Algorithm analyzes patterns of word co-occurrences",
+            "Groups words that frequently appear together",
+            "Assigns distribution over topics to each document"
+          ],
+          "techniques": {
+            "lda": "Latent Dirichlet Allocation - assumes each document is a mix of topics",
+            "nmf": "Non-negative Matrix Factorization - simpler mathematical approach"
+          }
+        },
+        "ml_based_classification": {
+          "naive_bayes": {
+            "description": "Based on Bayes' Theorem, predicts probability that text belongs to certain category",
+            "assumption": "All features (words) are independent",
+            "variations": ["Multinomial Naïve Bayes", "Bernoulli Naïve Bayes", "Gaussian Naïve Bayes"]
+          },
+          "svm": {
+            "description": "Finds optimal hyperplane that separates categories with maximum margin",
+            "advantages": ["Works well with high-dimensional data", "Effective with limited training data", "Robust to overfitting"],
+            "disadvantages": ["Not ideal for large-scale datasets", "Can be slow to train", "Less interpretable"]
+          },
+          "neural_networks": {
+            "models": {
+              "rnn": "Good for handling sequential data, struggles with long-term dependencies",
+              "lstm_gru": "Variants of RNN that remember long-range dependencies better",
+              "cnn": "Extract local patterns in text, surprisingly effective for text classification",
+              "transformers": "Learn contextualized word representations, achieve state-of-the-art results"
+            },
+            "advantages": ["Captures deep semantic patterns", "Achieves state-of-the-art performance"],
+            "disadvantages": ["Requires more training data", "Computationally expensive"]
+          }
+        }
+      }
+    }
+  },
+  "code_examples": {
+    "nltk_installation": {
+      "pip_install": "pip install nltk",
+      "download_resources": "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
+    },
+    "text_preprocessing": {
+      "cleaning_example": "Original: 'The weather is sunny today!' Cleaned: 'weather sunny today'",
+      "tokenization_example": "Text: 'NLP is interesting.' Tokens: ['NLP', 'is', 'interesting']"
+    },
+    "sentiment_analysis": {
+      "textblob_example": "from textblob import TextBlob; blob = TextBlob(text); sentiment = blob.sentiment",
+      "vader_example": "from nltk.sentiment import SentimentIntensityAnalyzer; sia = SentimentIntensityAnalyzer(); scores = sia.polarity_scores(text)"
+    },
+    "topic_modeling": {
+      "lda_example": "from sklearn.decomposition import LatentDirichletAllocation; lda = LatentDirichletAllocation(n_components=3)"
+    },
+    "ner_example": {
+      "nltk_ner": "from nltk import ne_chunk; tree = ne_chunk(pos_tag(word_tokenize(text)))"
+    }
+  },
+  "key_concepts": {
+    "tokenization": "Process of splitting text into words or parts of words",
+    "stemming": "Reducing words to their root or base form",
+    "lemmatization": "Getting the correct dictionary form of a word",
+    "stopwords": "Common words like 'the', 'is', 'a' that contribute little meaning",
+    "bag_of_words": "Counts frequency of each word in a document",
+    "tf_idf": "Measures how significant a word is in a document relative to all documents",
+    "word_embeddings": "Convert words into vectors based on their meaning and context",
+    "pos_tagging": "Identifying the part of speech of each word in a sentence",
+    "ner": "Identifying and classifying named entities in text",
+    "sentiment_analysis": "Identifying emotional tone behind text",
+    "text_classification": "Categorizing text into predefined labels or classes"
+  }
+}
